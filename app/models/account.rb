@@ -56,8 +56,6 @@ class Account < ApplicationRecord
 
   scope :active, -> { where(archived_at: nil) }
 
-  has_one_attached :logo
-
   def testing?
     linked_account_account&.testing?
   end
@@ -70,4 +68,25 @@ class Account < ApplicationRecord
     super || build_default_template_folder(name: TemplateFolder::DEFAULT_NAME,
                                            author_id: users.minimum(:id)).tap(&:save!)
   end
+
+
+
+  # --- PASTE THE CODE BELOW THIS LINE ---
+
+  def pro?
+    true
+  end
+
+  def white_label?
+    true
+  end
+
+  def api_enabled?
+    true
+  end
+
+  def custom_email_enabled?
+    true
+  end
+  
 end
