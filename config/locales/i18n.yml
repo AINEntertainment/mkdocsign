@@ -376,6 +376,7 @@ en: &en
   teams: Teams
   tenants: Tenants
   send_signature_requests_via_sms: Send signature requests via SMS
+  coming_soon: Coming Soon
   twilio_settings: Twilio Settings
   webhook_settings: Webhook Settings
   sending_sms: Sending SMS
