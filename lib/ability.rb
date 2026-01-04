@@ -21,5 +21,7 @@ class Ability
     can :manage, Account, id: user.account_id
     can :manage, AccessToken, user_id: user.id
     can :manage, WebhookUrl, account_id: user.account_id
+    can :manage, :saml_sso 
+    can :manage, EncryptedConfig # This is required for SSO and custom SMTP
   end
 end
