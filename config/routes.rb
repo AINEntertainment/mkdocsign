@@ -189,9 +189,7 @@ Rails.application.routes.draw do
         post :refresh, on: :member
       end
     end
-    resource :account, only: %i[show update destroy] do
-      delete :logo, on: :member, to: 'accounts#remove_logo'
-    end
+    resource :account, only: %i[show update destroy]
     resources :profile, only: %i[index] do
       collection do
         patch :update_contact

@@ -310,7 +310,6 @@ en: &en
   button_title: Button title
   button_url: Button URL
   upload_logo: Upload Logo
-  logo_has_been_removed: Logo has been removed.
   show_confetti_on_successful_completion: Show confetti on successful completion
   attach_audit_log_pdf: Attach audit log PDF
   attach_documents: Attach documents

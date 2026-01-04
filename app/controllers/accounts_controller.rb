@@ -43,14 +43,6 @@ class AccountsController < ApplicationController
     render :show, status: :unprocessable_content
   end
 
-  def remove_logo
-    authorize! :update, current_account
-
-    current_account.logo.purge
-
-    redirect_back(fallback_location: settings_account_path, notice: I18n.t('logo_has_been_removed'))
-  end
-
   def destroy
     authorize!(:manage, current_account)
 
@@ -73,7 +65,7 @@ class AccountsController < ApplicationController
   end
 
   def account_params
-    params.require(:account).permit(:name, :timezone, :locale, :logo)
+    params.require(:account).permit(:name, :timezone, :locale)
   end
 
   def app_url_params
