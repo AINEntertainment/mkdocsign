@@ -8,6 +8,10 @@ class PersonalizationSettingsController < ApplicationController
     AccountConfig::SUBMITTER_DOCUMENTS_COPY_EMAIL_KEY,
     AccountConfig::SUBMITTER_COMPLETED_EMAIL_KEY,
     AccountConfig::FORM_COMPLETED_MESSAGE_KEY,
+    'white_label',
+    'hide_docuseal_logo',
+    'custom_branding_logo',
+    'custom_css',
     *(Docuseal.multitenant? ? [] : [AccountConfig::POLICY_LINKS_KEY])
   ].freeze
 
