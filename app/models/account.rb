@@ -69,21 +69,21 @@ class Account < ApplicationRecord
                                            author_id: users.minimum(:id)).tap(&:save!)
   end
 
-  def pro?
-    true
-  end
+  # def pro?
+  #   true
+  # end
 
-  def white_label?
-    true
-  end
+  # def white_label?
+  #   true
+  # end
 
-  def api_enabled?
-    true
-  end
+  # def api_enabled?
+  #   true
+  # end
 
-  def custom_email_enabled?
-    true
-  end
+  # def custom_email_enabled?
+  #   true
+  # end
 
   
 end

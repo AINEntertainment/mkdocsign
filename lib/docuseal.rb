@@ -2,27 +2,29 @@
 
 module Docuseal
   URL_CACHE = ActiveSupport::Cache::MemoryStore.new
-  PRODUCT_URL = 'https://www.docuseal.com'
+  PRODUCT_URL = 'https://www.mkenterprise-eg.com'
   PRODUCT_EMAIL_URL = ENV.fetch('PRODUCT_EMAIL_URL', PRODUCT_URL)
   NEWSLETTER_URL = "#{PRODUCT_URL}/newsletters".freeze
   ENQUIRIES_URL = "#{PRODUCT_URL}/enquiries".freeze
-  PRODUCT_NAME = 'DocuSeal'
+  PRODUCT_NAME = 'MK Digital Signature'
   DEFAULT_APP_URL = ENV.fetch('APP_URL', 'http://localhost:3000')
   MK_WEBSITE_URL = 'https://mkenterprise-eg.com'
-  DISCORD_URL = 'https://discord.gg/qygYCDGck9'
-  TWITTER_URL = 'https://twitter.com/docusealco'
-  TWITTER_HANDLE = '@docusealco'
+  DISCORD_URL = '#'
+  TWITTER_URL = '#'
+  TWITTER_HANDLE = '#'
   CHATGPT_URL = "#{PRODUCT_URL}/chat".freeze
   SUPPORT_EMAIL = 'support@mkenterprise-eg.com'
   HOST = ENV.fetch('HOST', 'localhost')
   AATL_CERT_NAME = 'docuseal_aatl'
-  CONSOLE_URL = if Rails.env.development?
-                  'http://console.localhost.io:3001'
-                elsif ENV['MULTITENANT'] == 'true'
-                  "https://console.#{HOST}"
-                else
-                  'https://console.docuseal.com'
-                end
+  # CONSOLE_URL = if Rails.env.development?
+  #                 'http://console.localhost.io:3001'
+  #               elsif ENV['MULTITENANT'] == 'true'
+  #                 "https://console.#{HOST}"
+  #               else
+  #                 'https://console.docuseal.com'
+  #               end
+  CONSOLE_URL = "/console"
+
   CLOUD_URL = if Rails.env.development?
                 'http://localhost:3000'
               else
@@ -76,8 +78,6 @@ module Docuseal
   def fulltext_search?
     true
   end
-
-  CONSOLE_URL = "/console"
 
   def enable_pwa?
     true
