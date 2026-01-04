@@ -16,6 +16,7 @@ RSpec.describe 'Account Settings' do
     expect(page).to have_field('Time zone', with: account.timezone)
     expect(page).to have_field('Language', with: account.locale)
     expect(page).to have_field('App URL', with: encrypted_config.value)
+    expect(page).to have_content('Company Logo')
   end
 
   it 'updates the account settings' do

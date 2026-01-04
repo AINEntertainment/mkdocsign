@@ -55,6 +55,27 @@
     <a href="<%= edit_user_initials_path %>" data-turbo-frame="modal" class="base-button w-full">
       <%= t('update_initials') %>
     </a>
+    <% if can?(:update, current_account) %>
+      <p class="text-2xl font-bold mt-8 mb-4">
+        <%= t('company_logo') %>
+      </p>
+      <%= form_for '', url: settings_account_path, method: :patch, html: { multipart: true, class: 'space-y-4' } do |f| %>
+        <%= fields_for current_account do |ff| %>
+          <% if current_account.logo.attached? %>
+            <div class="flex justify-center mb-4 relative">
+              <%= button_to button_title(title: t('remove'), disabled_with: t('removing')), settings_account_logo_path, method: :delete, class: 'right-0 top-0 absolute link' %>
+              <%= image_tag current_account.logo.variant(resize_to_limit: [240, 80]), alt: t('company_logo'), class: 'mx-auto' %>
+            </div>
+          <% end %>
+          <div class="form-control">
+            <%= ff.file_field :logo, accept: 'image/*', class: 'base-input' %>
+          </div>
+          <div class="form-control pt-2">
+            <%= f.button button_title(title: t('upload_logo'), disabled_with: t('uploading')), class: 'base-button' %>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
     <% if true_user == current_user && !current_account.testing? %>
       <p class="text-2xl font-bold mt-8 mb-4">
         <%= t('change_password') %>

@@ -56,6 +56,8 @@ class Account < ApplicationRecord
 
   scope :active, -> { where(archived_at: nil) }
 
+  has_one_attached :logo
+
   def testing?
     linked_account_account&.testing?
   end
