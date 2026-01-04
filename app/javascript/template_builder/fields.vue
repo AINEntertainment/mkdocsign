@@ -114,7 +114,14 @@
       :key="type"
     >
       <button
-        v-if="fieldTypes.includes(type) || ((withPhone || type != 'phone') && (withPayment || type != 'payment') && (withVerification || type != 'verification'))"
+  v-if="
+    fieldTypes.includes(type) ||
+    (
+      (type !== 'phone' || withPhone) &&
+      (withPayment || type !== 'payment') &&
+      (withVerification || type !== 'verification')
+    )
+  "
         :id="`${type}_type_field_button`"
         draggable="true"
         class="field-type-button group flex items-center justify-center border border-dashed w-full rounded relative fields-grid-item"
@@ -138,7 +145,7 @@
         </div>
       </button>
       <div
-        v-if="type == 'phone' && (fieldTypes.length === 0 || fieldTypes.includes(type))"
+        v-else-if="type == 'phone' && (fieldTypes.length === 0 || fieldTypes.includes(type))"
         class="tooltip tooltip-bottom flex"
         :class="{'tooltip-bottom-end': withPayment, 'tooltip-bottom': !withPayment }"
         :data-tip="t('unlock_sms_verified_phone_number_field_with_paid_plan_use_text_field_for_phone_numbers_without_verification')"

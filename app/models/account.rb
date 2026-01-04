@@ -69,6 +69,21 @@ class Account < ApplicationRecord
                                            author_id: users.minimum(:id)).tap(&:save!)
   end
 
+    def with_phone?
+    true
+  end
+
+  def admin?
+  role == 'admin'
+end
+
+def editor?
+  role == 'editor'
+end
+
+def viewer?
+  role == 'viewer'
+end
   # def pro?
   #   true
   # end
