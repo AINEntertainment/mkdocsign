@@ -138,6 +138,36 @@ RSpec.describe 'Team Settings' do
     end
   end
 
+  context 'role based UI for non-admins' do
+    it 'editor cannot invite new users or change roles' do
+      editor = create(:user, account: account, role: User::EDITOR_ROLE)
+      sign_in(editor)
+
+      visit settings_users_path
+
+      expect(page).to have_no_link('New User')
+
+      # editor can edit own profile
+      click_link 'Edit', href: edit_user_path(editor)
+
+      within '#modal' do
+        expect(page).to have_field('First name')
+        expect(page).to have_no_select('Role')
+      end
+    end
+
+    it 'viewer cannot edit other users' do
+      viewer = create(:user, account: account, role: User::VIEWER_ROLE)
+      other = create(:user, account: account)
+      sign_in(viewer)
+
+      visit settings_users_path
+
+      expect(page).to have_no_link('New User')
+      expect(page).to have_no_link('Edit', href: edit_user_path(other))
+    end
+  end
+
   context 'when single user' do
     before do
       visit settings_users_path

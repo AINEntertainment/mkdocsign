@@ -37,7 +37,11 @@
           <%= f.select :otp_required_for_login, [[t('enabled'), true], [t('disabled'), false]], { include_blank: false }, class: 'base-select' %>
         </div>
       <% end %>
-      <%= render 'role_select', f: %>
+
+      <%# Only admins can modify another user's role %>
+      <% if current_user.role == User::ADMIN_ROLE %>
+        <%= render 'role_select', f: %>
+      <% end %>
     <% end %>
     <% if local_assigns[:extra_fields_html].present? %>
       <%= local_assigns[:extra_fields_html] %>
