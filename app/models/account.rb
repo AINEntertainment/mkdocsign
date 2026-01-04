@@ -69,10 +69,6 @@ class Account < ApplicationRecord
                                            author_id: users.minimum(:id)).tap(&:save!)
   end
 
-
-
-  # --- PASTE THE CODE BELOW THIS LINE ---
-
   def pro?
     true
   end
@@ -88,5 +84,6 @@ class Account < ApplicationRecord
   def custom_email_enabled?
     true
   end
+
   
 end

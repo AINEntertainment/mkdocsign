@@ -123,7 +123,7 @@ Rails.application.routes.draw do
     get '/disk/:encoded_key/*filename' => 'active_storage/disk#show', as: :rails_disk_service
     put '/disk/:encoded_token' => 'active_storage/disk#update', as: :update_rails_disk_service
     post '/direct_uploads' => 'active_storage/direct_uploads#create', as: :rails_direct_uploads
-    mount Docuseal::Console::Engine => '/console'
+
     ActiveSupport.run_load_hooks(:multitenant_routes, self)
   end
 
