@@ -1,6 +1,4 @@
 <% if signed_in? && current_user != true_user %>
   <%= render 'shared/test_alert' %>
 <span class="hidden md:inline-flex h-3 border-r border-base-content"></span>
-<% elsif request.path.starts_with?('/settings') %>
-  <% end %>
 <% end %>
