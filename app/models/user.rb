@@ -47,8 +47,14 @@
 #  fk_rails_...  (account_id => accounts.id)
 #
 class User < ApplicationRecord
+  ADMIN_ROLE  = 'admin'
+  EDITOR_ROLE = 'editor'
+  VIEWER_ROLE = 'viewer'
+
   ROLES = [
-    ADMIN_ROLE = 'admin'
+    ADMIN_ROLE,
+    EDITOR_ROLE,
+    VIEWER_ROLE
   ].freeze
 
   EMAIL_REGEXP = /[^@;,<>\s]+@[^@;,<>\s]+/
