@@ -56,7 +56,7 @@ module Docuseal
   end
 
   def advanced_formats?
-    multitenant?
+    true
   end
 
   def demo?
@@ -74,15 +74,10 @@ module Docuseal
   end
 
   def fulltext_search?
-    return @fulltext_search unless @fulltext_search.nil?
-
-    @fulltext_search =
-      if SearchEntry.table_exists?
-        Docuseal.multitenant? || AccountConfig.exists?(key: :fulltext_search, value: true)
-      else
-        false
-      end
+    true
   end
+
+  CONSOLE_URL = "/console"
 
   def enable_pwa?
     true
