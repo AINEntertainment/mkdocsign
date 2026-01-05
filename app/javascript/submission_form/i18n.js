@@ -73,7 +73,7 @@ const en = {
   create_a_free_account: 'Create a Free Account',
   powered_by: 'Powered by',
   please_check_the_box_to_continue: 'Please check the box to continue.',
-  open_source_documents_software: 'open source documents software',
+  open_source_documents_software: 'All Rights Reserved',
   verified_phone_number: 'Verify Phone Number',
   use_international_format: 'Use international format: +1xxx',
   six_digits_code: '6-digit code',
