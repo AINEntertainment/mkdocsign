@@ -41,6 +41,7 @@ safeRegisterElement('submission-form', class extends HTMLElement {
       withDisclosure: this.dataset.withDisclosure === 'true',
       reuseSignature: this.dataset.reuseSignature !== 'false',
       withTypedSignature: this.dataset.withTypedSignature !== 'false',
+      requirePhone2fa: this.dataset.requirePhone2fa === 'true',
       authenticityToken: document.querySelector('meta[name="csrf-token"]')?.content,
       rememberSignature: this.dataset.rememberSignature === 'true',
       values: reactive(JSON.parse(this.dataset.values)),

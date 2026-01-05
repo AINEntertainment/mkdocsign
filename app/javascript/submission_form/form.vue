@@ -446,6 +446,7 @@
             :locale="language?.toLowerCase() || browserLanguage"
             :show-field-names="showFieldNames"
             :verified-value="phoneVerifiedValues[currentField.uuid]"
+            :require-phone-2fa="requirePhone2fa"
             :default-value="submitter.phone"
             :submitter-slug="submitterSlug"
             @focus="scrollIntoField(currentField)"
@@ -851,6 +852,11 @@ export default {
       type: String,
       required: false,
       default: ''
+    },
+    requirePhone2fa: {
+      type: Boolean,
+      required: false,
+      default: false
     },
     completedButton: {
       type: Object,
