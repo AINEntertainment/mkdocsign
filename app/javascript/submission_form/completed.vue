@@ -91,10 +91,10 @@
     >
       {{ t('powered_by') }}
       <a
-        href="https://www.mkenterprise-eg.com"
+        href="https://www.docuseal.com/start"
         target="_blank"
         class="underline"
-      >MK Enterprise</a>
+      >MK Enterprise</a> - {{ t('open_source_documents_software') }}
     </div>
   </div>
 </template>
