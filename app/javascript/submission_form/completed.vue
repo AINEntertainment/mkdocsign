@@ -94,7 +94,7 @@
         href="https://www.docuseal.com/start"
         target="_blank"
         class="underline"
-      >MK Enterprise</a> - {{ t('open_source_documents_software') }}
+      >MK Enterprise</a>
     </div>
   </div>
 </template>
