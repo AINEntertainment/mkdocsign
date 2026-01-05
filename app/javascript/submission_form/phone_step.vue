@@ -148,30 +148,21 @@ export default {
       type: String,
       required: false,
       default: ''
-      } else if (!this.isCodeSent) {
-        // Basic validation: international E.164-like format (plus and 7-15 digits)
-        const validPhoneRe = /^\+\d{7,15}$/
-
-        if (!validPhoneRe.test(this.fullInternationalPhoneValue.replace(/[^+\d]/g, ''))) {
-          alert(this.t('number_phone_is_invalid').replace('{number}', this.fullInternationalPhoneValue))
-
-          return Promise.reject(new Error('phone invalid'))
-        }
-
-        if (this.requirePhone2fa !== true) {
-          // verification not required: accept phone immediately
-          this.$emit('update:model-value', this.fullInternationalPhoneValue)
-
-          return Promise.resolve({})
-        }
-
-        return this.sendVerificationCode().then(() => {
-          this.$emit('update:model-value', this.fullInternationalPhoneValue)
-
-          this.isCodeSent = true
-
-          return Promise.reject(new Error('verify with code'))
-        })
+    },
+    submitterSlug: {
+      type: String,
+      required: true
+    },
+    locale: {
+      type: String,
+      required: false,
+      default: 'en'
+    },
+    showFieldNames: {
+      type: Boolean,
+      required: false,
+      default: true
+    },
     modelValue: {
       type: String,
       required: false,
@@ -181,12 +172,6 @@ export default {
       type: String,
       required: false,
       default: ''
-    }
-    ,
-    requirePhone2fa: {
-      type: Boolean,
-      required: false,
-      default: false
     }
   },
   emits: ['update:model-value', 'focus', 'submit'],
@@ -200,21 +185,14 @@ export default {
       selectedCountry: {}
     }
   },
-      } else if (!this.isCodeSent) {
-        if (this.requirePhone2fa !== true) {
-          // verification not required: accept phone immediately
-          this.$emit('update:model-value', this.fullInternationalPhoneValue)
-
-          return Promise.resolve({})
-        }
-
-        return this.sendVerificationCode().then(() => {
-          this.$emit('update:model-value', this.fullInternationalPhoneValue)
-
-          this.isCodeSent = true
-
-          return Promise.reject(new Error('verify with code'))
-        })
+  computed: {
+    countries () {
+      return phoneData.map(([iso, name, dial, flag, tz]) => {
+        return { iso, name, dial, flag, tz }
+      })
+    },
+    countriesDialIndex () {
+      return this.countries.reduce((acc, item) => {
         acc[item.dial] ||= item
 
         return acc
